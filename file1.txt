@@ -1,0 +1,1 @@
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT

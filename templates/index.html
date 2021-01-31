@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ML API</title>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <style>
+            div.login{
+                overflow-y:scroll;
+            }
+            div.login::-webkit-scrollbar {
+            display: none;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="login">
+            <h1>Heart Disease Prediction</h1>
+         <form action="{{ url_for('predict')}}" method="post">
+           <input type="number" id="Age" name="Age" placeholder="Age" required="required" /><br>
+           <input list="Gender" name="gender" id="gender" placeholder="Gender" required="required" /><br>
+            <datalist id="Gender">
+                <option value="Male">
+                <option value="Female">
+            </datalist>
+            <input list="Chestpain" name="chestpain" id="chestpain" placeholder="Type of chestpain" required="required" /><br>
+            <datalist id="Chestpain">
+                <option value="typical angina">
+                <option value="atypical angina">
+                <option value="non-anginal pain">
+                <option value="asymptomatic">
+            </datalist>
+            <input type="number" id="trestbps" name="trestbps" placeholder=" resting blood pressure in mm Hg" required="required" /><br>
+            <input type="number" id="chol" name="chol" placeholder="serum cholestoral in mg/dl" required="required" /><br>
+            <input list="fbs" name="fb" id="fb" placeholder="Is fasting blood sugar > 120 mg/dl" required="required" /><br>
+            <datalist id="fbs">
+                <option value="Yes">
+                <option value="No">
+            </datalist>
+            <input list="restecg" name="rest" id="rest" placeholder="resting electrocardiographic results" required="required" /><br>
+            <datalist id="restecg">
+                <option value="normal">
+                <option value="having ST-T wave abnormality">
+            </datalist>
+            <input type="number" id="thalch" name="thalch" placeholder="maximum heart rate achieved" required="required" /><br>
+            <input list="exang" name="exa" id="exa" placeholder="exercise induced angina" required="required" /><br>
+            <datalist id="exang">
+                <option value="Yes">
+                <option value="No">
+            </datalist>
+            <input type="number" id="oldpeak" name="oldpeak" placeholder="ST depression induced by exercise relative to rest" required="required" /><br>
+            <input list="slope" name="slop" id="slop" placeholder="the slope of the peak exercise ST segment" required="required" /><br>
+            <datalist id="slope">
+                <option value="upsloping">
+                <option value="flat">
+                <option value="downsloping">
+                </datalist>
+            <input type="number" id="ca" name="ca" placeholder="number of major vessels colored by flourosopy" min=0 max=2 required="required" /><br>
+            <input list="thal" name="tha" id="tha" placeholder="Stage of Thalassemia" required="required" /><br>
+            <datalist id="thal">
+                <option value="normal">
+                <option value="fixed defect">
+                <option value="reversable defect">
+            </datalist>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+         </form>
+         <br>
+         <br>
+        </div>
+       {{ prediction_text }}
+    </body>
+</html>
